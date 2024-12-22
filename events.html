@@ -4,10 +4,54 @@ title: Begivenheder
 
 
 <ul>
-    {% for event in site.events %}
-    <li>
-        <h2><a href="{{ event.url }}"">{{ event.title }}</a></h2>
-        {{ post.excerpt }}
-    </li>
+    {% for event in site.events %} <!-- Looping through all *.html files in collection _events -->
+        {% assign year = event.year %} <!-- Extract the year from the 'year' property in each file -->
+        {% assign event_data = site.data.events %} <!-- Extract the data from the _data/events/*.json files -->
+
+        <li>
+            <h4><a href="{{ event.url }}">{{ event.title }}</a></h4> <!-- reference to the files in _events collection -->
+            {% for event_detail in event_data %} <!-- event_detail = 2024.json and 2025.json, therefor event_detail[0] = 2024 or 2025 -->
+                <ul>
+                    {% if year ==  event_detail[0] %} <!-- true if year equals the property year in _events.*.html -->
+                        {% for event_info in event_detail offset: 1%} <!-- index 0 contains the year. index1 contains the informations -->
+                            {% for info in event_info %} <!-- accessing the informations -->
+                                    <li>
+                                        {% comment %}
+                                        {% assign a = info.Dato | date: "%A" %}
+                                        {% case a %}
+                                        {% when 'Monday' %}Mandag
+                                        {% when 'Tuesday' %}Tirsdag
+                                        {% when 'Wednesday' %}Onsdag
+                                        {% when 'Thursday' %}Torsdag
+                                        {% when 'Friday' %}Fredag
+                                        {% when 'Saturday' %}Lørdag
+                                        {% when 'Sunday' %}Søndag
+                                        {% endcase %}
+                                        {{ info.Dato | date: ", %d-" }}
+                                        {% assign m = info.Dato | date: "%m" %}
+                                        {% case m %}
+                                        {% when '1' %}Januar
+                                        {% when '2' %}Februar
+                                        {% when '3' %}Marts
+                                        {% when '4' %}April
+                                        {% when '5' %}Maj
+                                        {% when '6' %}Juni
+                                        {% when '7' %}Juli
+                                        {% when '8' %}August
+                                        {% when '9' %}September
+                                        {% when '10' %}Oktober
+                                        {% when '11' %}November
+                                        {% when '12' %}December
+                                        {% endcase %}
+                                        {% endcomment %}
+                                        {{ info.Dato | date: '%d-%m-%Y' }}: <b>{{ info.Begivenhed }}</b>
+                                    </li>
+                            {% endfor %} 
+                        {% endfor %} 
+                    {% endif %}
+                </ul>
+            {% endfor %}
+        </li>
+        <div class="mb-5"></div>
     {% endfor %}
 </ul>
