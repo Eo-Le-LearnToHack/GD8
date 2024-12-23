@@ -20,12 +20,12 @@ collections:
 # layouts applied to different type of paths.
 defaults:
 
-  # if pages in folder _costs then use layout: null.
+  # if pages in folder _costs then use layout: cost.
   - scope:
       path: ""
       type: "costs"
     values:
-      layout: "null"
+      layout: "cost"
 
   # if pages in folder _persons then use layout: person.
   - scope:
@@ -46,7 +46,7 @@ defaults:
       path: ""
     values:
       layout: "default"
-      title: "null"
+
 
 
 #plugins:
