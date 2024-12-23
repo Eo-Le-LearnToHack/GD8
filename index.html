@@ -1,144 +1,20 @@
 ---
 title: GD8 Fødselsdag
 ---
-<div><h2><b><u>Upcoming events</b></u></h2></div>
 
-<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-	<div class="carousel-inner">
-	  <div class="carousel-item active">
-		<p>Juleaften 24.12.2024</p>
-	  </div>
-	  <div class="carousel-item">
-		<p>Juleaften 24.12.2024</p>
-	  </div>
-	  <div class="carousel-item">
-		<p>Juleaften 24.12.2024</p>
-	  </div>
-	</div>
-	<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-	  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-	  <span class="visually-hidden">Previous</span>
-	</button>
-	<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-	  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-	  <span class="visually-hidden">Next</span>
-	</button>
-  </div>
-
-
-
-<button type="" class="btn bn-sm btn-danger m-5" onclick="alert(`Din uartige bølle!!!\nDu kan hvis ikke lade knappen være.\nPAS PÅ DIN MOBIL IKKE EKSPLODER!\n\nDET BARE EN JOKE!`)">Lad vær med at klikke denne knap!</button>
-
-<h1 class="display-5 fw-bold text-decoration-underline">Alle GD8 medlemmer</h1>
-<div class="container-fluid d-flex align-items-center text-center text-white overflow-x-auto overflow-y-hidden border border-2 custom-img-container">
-	{% comment %}
-	{% assign sorted_people = site.data.people | sort: "dob" %}
-	{% for person in sorted_people %}
-		<div class="p-3">
-			<img class="rounded-circle" src="{{ person.img }}" alt="{{ person.name }}">
-			<p class="pt-2"><small>{{ person.name }}<br>{{ person.dob | date: '%d-%m-%Y' }}</small></p>
-		</div>
-	{% endfor %}
-	{% endcomment %}
-</div>
-
-<div class="pb-5"></div>
-
-<h1 class="display-5 fw-bold text-decoration-underline text-decoration-underline">Personer født i januar</h1>
-<div id="calc-ppl-in-jan"></div>
-
-<div class="pb-5"></div>
-
-<h1 class="display-5 fw-bold text-decoration-underline">Personer født i februar</h1>
-<div id="calc-ppl-in-feb"></div>
-
-<div class="pb-5"></div>
-
-<h1 class="display-5 fw-bold text-decoration-underline">Personer født i marts</h1>
-<div id="calc-ppl-in-mar"></div>
-
-<div class="pb-5"></div>
-
-<h1 class="display-5 fw-bold text-decoration-underline">Personer født i april</h1>
-<div id="calc-ppl-in-apr"></div>
-
-<div class="pb-5"></div>
-
-<h1 class="display-5 fw-bold text-decoration-underline">Personer født i maj</h1>
-<div id="calc-ppl-in-may"></div>
-
-<div class="pb-5"></div>
-
-
-<h1 class="display-5 fw-bold text-decoration-underline">Personer født i juni</h1>
-<div id="calc-ppl-in-jun"></div>
-
-<div class="pb-5"></div>
-
-
-<h1 class="display-5 fw-bold text-decoration-underline">Personer født i juli</h1>
-<div id="calc-ppl-in-jul"></div>
-
-<div class="pb-5"></div>
-
-
-<h1 class="display-5 fw-bold text-decoration-underline">Personer født i august</h1>
-<div id="calc-ppl-in-aug"></div>
-
-<div class="pb-5"></div>
-
-<h1 class="display-5 fw-bold text-decoration-underline">Personer født i september</h1>
-<div id="calc-ppl-in-sep"></div>
-
-<div class="pb-5"></div>
-
-<h1 class="display-5 fw-bold text-decoration-underline">Personer født i oktober</h1>
-<div id="calc-ppl-in-oct"></div>
-
-<div class="pb-5"></div>
-
-<h1 class="display-5 fw-bold text-decoration-underline">Personer født i november</h1>
-<div id="calc-ppl-in-nov"></div>
-
-<div class="pb-5"></div>
-
-<h1 class="display-5 fw-bold text-decoration-underline">Personer født i december</h1>
-<div id="calc-ppl-in-dec"></div>
-
-<div class="pb-5"></div>
-  
-<script src="{{ '/assets/js/update-check.js' | relative_url }}"></script>
-<script src="{{ '/assets/js/calc-ppl-in-month.js' | relative_url }}"></script>
-
-
-<script>
-	/*
-	const fetchUrlJan = "{{ '/people/ppl-in-jan.html' | relative_url }}";
-	const fetchUrlFeb = "{{ '/people/ppl-in-feb.html' | relative_url }}";
-	const fetchUrlMar = "{{ '/people/ppl-in-mar.html' | relative_url }}";
-	const fetchUrlApr = "{{ '/people/ppl-in-apr.html' | relative_url }}";
-	const fetchUrlMay = "{{ '/people/ppl-in-may.html' | relative_url }}";
-	const fetchUrlJun = "{{ '/people/ppl-in-jun.html' | relative_url }}";
-	const fetchUrlJul = "{{ '/people/ppl-in-jul.html' | relative_url }}";
-	const fetchUrlAug = "{{ '/people/ppl-in-aug.html' | relative_url }}";
-	const fetchUrlSep = "{{ '/people/ppl-in-sep.html' | relative_url }}";
-	const fetchUrlOct = "{{ '/people/ppl-in-oct.html' | relative_url }}";
-	const fetchUrlNov = "{{ '/people/ppl-in-nov.html' | relative_url }}";
-	const fetchUrlDec = "{{ '/people/ppl-in-dec.html' | relative_url }}";
-	
-	// Call the functions from assets/js/calc-ppl-in-month.js
-	calcPeopleFilteredOnMonth(fetchUrlJan, 'calc-ppl-in-jan'); 
-	calcPeopleFilteredOnMonth(fetchUrlFeb, 'calc-ppl-in-feb'); 
-	calcPeopleFilteredOnMonth(fetchUrlMar, 'calc-ppl-in-mar'); 
-	calcPeopleFilteredOnMonth(fetchUrlApr, 'calc-ppl-in-apr'); 
-	calcPeopleFilteredOnMonth(fetchUrlMay, 'calc-ppl-in-may'); 
-	calcPeopleFilteredOnMonth(fetchUrlJun, 'calc-ppl-in-jun'); 
-	calcPeopleFilteredOnMonth(fetchUrlJul, 'calc-ppl-in-jul'); 
-	calcPeopleFilteredOnMonth(fetchUrlAug, 'calc-ppl-in-aug'); 
-	calcPeopleFilteredOnMonth(fetchUrlSep, 'calc-ppl-in-sep'); 
-	calcPeopleFilteredOnMonth(fetchUrlOct, 'calc-ppl-in-oct'); 
-	calcPeopleFilteredOnMonth(fetchUrlNov, 'calc-ppl-in-nov'); 
-	calcPeopleFilteredOnMonth(fetchUrlDec, 'calc-ppl-in-dec'); 
-	*/
-	
-</script>
+<h1>All Collections</h1>
+<ul>
+  {% for collection in site.collections %}
+    <li>
+      <h2>{{ collection.label }}</h2>
+      <p>Number of items: {{ collection.docs | size }}</p>
+      <ul>
+        {% for item in collection.docs %}
+          <li>
+            <a href="{{ item.url }}">{{ item.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+</ul>

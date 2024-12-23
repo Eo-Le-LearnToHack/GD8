@@ -1,0 +1,40 @@
+---
+title: Udgifter
+---
+
+<h1>{{ page | inspect }}</h1>
+
+
+{% comment %}
+How to retrieve data using nested loop
+{% for cost in site.data.costs %} <!-- arrays of data in costs.json -->	
+	{% for currentCostArrayData in cost %} <!-- accessing the array of current index -->
+		{{ forloop.index0 }}: {{ currentCostArrayData[0] }} <!-- retrieving the name of all the keys for currentCostArrayData -->
+		{{ forloop.index0 }}: {{ currentCostArrayData[1] }} <!-- retrieving the values of all the key values for currentCostArrayData -->
+	{% endfor %}
+{% endfor %}
+{% endcomment %}
+
+<h2><u>Tabeloversigt over udgifterne.</u></h2>	
+<div class="container-fluid overflow-auto mt-5" style="max-height: 800px;">
+    <table class="table table-sm table-striped table-bordered">
+        <thead class="table-info">
+            <tr>
+		{% for cost in site.data.costs limit: 1 %} <!-- only the first array in costs.json -->	
+			{% for currentCostArrayData in cost %} <!-- accessing the array of current index -->
+		    		<th>{{ currentCostArrayData[0] }}</th>  <!-- assigning the name of all the keys from currentCostArrayData to th element -->
+			{% endfor %}
+		{% endfor %}	
+            </tr>
+        </thead>
+        <tbody>
+		{% for cost in site.data.costs %} <!-- all arrays in costs.json -->
+			<tr>	
+				{% for currentCostArrayData in cost %} <!-- accessing the array of current index -->
+					<td>{{ currentCostArrayData[1] }}</td>  <!-- assigning the value of all the key values from currentCostArrayData to td element -->
+				{% endfor %}
+			</tr>
+		{% endfor %}
+        </tbody>
+    </table>
+</div>

@@ -1,5 +1,14 @@
 ---
+title: "April"
 ---
-{% comment %}
-{{ site.data.people | where_exp: "person", "person.dob contains '-04-'" | jsonify }}
-{% endcomment %}
+<h1>In side ppl-in-apr.html</h1>
+test retrieving data from people<br>
+<hr>
+{% for family in site.data.persons %} <!-- alle filerne i _data/persons/ -->
+    
+    {% for individualFamily in family offset: 1 %} <!-- accessing the indifivual family, where index[0] is the filename and index[1] is the details-->
+    • {{forloop.index0}}: {{individualFamily | where_exp: "person", "person.dob contains '-02-'" }}<br> 
+    {% endfor %}
+{% endfor %}
+<hr>
+<h1>test after retrieving the data.</h1>
