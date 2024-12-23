@@ -11,7 +11,7 @@ baseurl: "" # only use if the jekyll project is in a subfolder
 collections:
   costs:
     output: true
-  people:
+  persons:
     output: true
   events:
     output: true
@@ -27,13 +27,12 @@ defaults:
     values:
       layout: "null"
 
-  # if pages in folder _people then use layout: null.
+  # if pages in folder _persons then use layout: person.
   - scope:
       path: ""
-      type: "people"
+      type: "persons"
     values:
-      layout: "null"
-      title: "null"
+      layout: "person"
 
   # if pages in folder _events then use layout: event.
   - scope:
