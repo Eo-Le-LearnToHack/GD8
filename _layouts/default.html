@@ -25,23 +25,20 @@
    
 </head>
 
-<body>
-    
+<body class="d-flex flex-column min-vh-100">
     <nav>
         {% include navigation.html %}
     </nav>
-    
+
     <header>
         {% include header.html %}
     </header>
-    
-    <main>
-        Inside main: <br>
+
+    <main class="flex-grow-1">
         {{ content }}
     </main>
-    
 
-    <footer>
+    <footer class="bg-dark text-white justify-text-center text-center py-3">
         {% include footer.html %}
     </footer>
     

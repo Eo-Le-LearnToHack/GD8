@@ -18,3 +18,9 @@ title: GD8 Fødselsdag
     </li>
   {% endfor %}
 </ul>
+
+Test ruby <br>
+{% assign sortedPersons = site.data.persons.gd8.all | sort: "family" %}
+{% for person in sortedPersons %}
+{{ person.family }}: {{ person.name }}, {{ person.dob}} <br>
+{% endfor %}
