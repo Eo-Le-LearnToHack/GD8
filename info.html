@@ -1,0 +1,59 @@
+---
+---
+
+<h1><u>All Collections</u></h1>
+<ul>
+  {% for collection in site.collections %}
+    <li>
+      <h2>{{ collection.label }}</h2>
+      <p>Number of items: {{ collection.docs | size }}</p>
+      <ul>
+        {% for item in collection.docs %}
+          <li>
+            {{ forloop.index1}}: <a href="{{ item.url }}">{{ item.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+</ul>
+
+<h1><u>All Pages</u></h1>
+<ul>
+  {% for page in site.pages %}
+    <li>
+      <a href="{{ page.url }}">{{ page.title | default: page.url }}</a>
+    </li>
+  {% endfor %}
+</ul>
+
+<h1><u>All Pages: keys and values</u></h1>
+<ul>
+  {% for key, value in page %}
+    <li>{{ key }}: {{ value }}</li>
+  {% endfor %}
+</ul>
+
+
+
+
+
+{% for x in y %}
+  {{ forloop.index1 }}: 
+{% endfor %}
+
+{% for x in y %}
+  {{ forloop.index1 }}: 
+{% endfor %}
+
+{% for x in y %}
+  {{ forloop.index1 }}: 
+{% endfor %}
+
+{% for x in y %}
+  {{ forloop.index1 }}: 
+{% endfor %}
+
+{% for x in y %}
+  {{ forloop.index1 }}: 
+{% endfor %}
