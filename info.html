@@ -1,6 +1,24 @@
 ---
 ---
 
+<h1><u>All Keys</u></h1>
+<ul>
+  {% for key in keys %}
+    <li>
+      {{ forloop.index1 }}: {{key}}
+    </li>
+  {% endfor %}
+</ul>
+
+<h1><u>All Pages</u></h1>
+<ul>
+  {% for page in site.pages %}
+    <li>
+      <a href="{{ page.url }}">{{ page.title | default: page.url }}</a>
+    </li>
+  {% endfor %}
+</ul>
+
 <h1><u>All Collections</u></h1>
 <ul>
   {% for collection in site.collections %}
@@ -18,21 +36,7 @@
   {% endfor %}
 </ul>
 
-<h1><u>All Pages</u></h1>
-<ul>
-  {% for page in site.pages %}
-    <li>
-      <a href="{{ page.url }}">{{ page.title | default: page.url }}</a>
-    </li>
-  {% endfor %}
-</ul>
 
-<h1><u>All Pages: keys and values</u></h1>
-<ul>
-  {% for key, value in page %}
-    <li>{{ key }}: {{ value }}</li>
-  {% endfor %}
-</ul>
 
 
 
