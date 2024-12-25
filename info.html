@@ -27,13 +27,27 @@
   {% endfor %}
 </ul>
 
-<h1><u>All Pages: keys and values</u></h1>
+
+<h1><u>Static Files by Type</u></h1>
+{% assign files_by_type = site.static_files | group_by: "extname" %}
+{% for group in files_by_type %}
+  <h2>Files with Extension: {{ group.name }}</h2>
+  <ul>
+    {% for file in group.items %}
+      <li>{{ file.path }}</li>
+    {% endfor %}
+  </ul>
+{% endfor %}
+
+
+<h1><u>Plugin Files</h1></u>
 <ul>
-  {% for key, value in page %}
-    <li>{{ key }}: {{ value }}</li>
+  {% for file in site.plugin_files %}
+    <li>
+      {{ forloop.index1 }}: {{ file }}
+    </li>
   {% endfor %}
 </ul>
-
 
 
 
