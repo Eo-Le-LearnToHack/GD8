@@ -1,0 +1,4 @@
+---
+title: "Født i December"
+---
+{{ site.data.persons.gd8.all | where_exp: "person", "person.dob contains '-12-'" }}

@@ -1,7 +1,23 @@
 ---
+title: Sitemap
 ---
 
+test gruop by<br>
+{% assign grouped_files = site.persons | keys" %}
+{{grouped_files}}<br>
+test end <br>
+
+{% for group in grouped_files %}
+  <h2>Group: {{ group.name }}</h2>
+  <ul>
+    {% for file in group.items %}
+      <li><a href="{{ file.url }}">{{ file.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endfor %}
+
 <h1><u>All Keys</u></h1>
+<p>Number of keys: {{ keys | size }}</p>
 <ul>
   {% for key in keys %}
     <li>
@@ -10,7 +26,20 @@
   {% endfor %}
 </ul>
 
+<h1><u>All site Keys</u></h1>
+{% assign siteKeys = site | keys %}</p>
+<ul>
+  {% for key in siteKeys %}
+    <li>
+      {{ forloop.index1 }}: {{key}}
+    </li>
+  {% endfor %}
+</ul>
+
+
+
 <h1><u>All Pages</u></h1>
+<p>Number of pages: {{ site.pages | size }}</p>
 <ul>
   {% for page in site.pages %}
     <li>
@@ -19,22 +48,42 @@
   {% endfor %}
 </ul>
 
+<h1><u>All Data</u></h1>
+<p>Number of data: {{ site.data | size }}</p>
+<ul>
+  {% for data in site.data %}
+    <li>
+      {{ forloop.index }}: {{data[0]}}
+    </li>
+  {% endfor %}
+</ul>
+
 <h1><u>All Collections</u></h1>
+<p>Number of collections: {{ site.collections | size }}</p>
 <ul>
   {% for collection in site.collections %}
     <li>
       <h2>{{ collection.label }}</h2>
-      <p>Number of items: {{ collection.docs | size }}</p>
+      <p>Number of docs in collection: {{ collection.docs | size }}</p>
+      {% assign sortedCollectionDocs = collection.docs | group_by_ext: "path" %}
+      {% for group in sortedCollectionDocs %}
       <ul>
-        {% for item in collection.docs %}
+        <h2>group.name: {{ group.name }}</h2>
+        {% for file in group.item %}
           <li>
-            {{ forloop.index1}}: <a href="{{ item.url }}">{{ item.title }}</a>
+            {{ forloop.index}}: <a href="{{ file.url }}">{{ file.path }}{{ file.title }}</a>
           </li>
+        
         {% endfor %}
       </ul>
+      {% endfor %}
     </li>
   {% endfor %}
 </ul>
+
+
+
+
 
 <h1><u>Static Files by Type</u></h1>
 {% assign files_by_type = site.static_files | group_by: "extname" %}
@@ -56,3 +105,4 @@
     </li>
   {% endfor %}
 </ul>
+

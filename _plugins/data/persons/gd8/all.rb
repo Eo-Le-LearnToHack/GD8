@@ -1,5 +1,3 @@
-# The script generates the file gd8_all.json at the build. gd8_all.json combines all the gd_*.json files in one file.
-
 require 'json'
 
 Jekyll::Hooks.register :site, :after_init do |site|
@@ -10,9 +8,15 @@ Jekyll::Hooks.register :site, :after_init do |site|
 
   # Ensure the directory exists
   if Dir.exist?(persons_dir)
+    # Delete the combined file if it already exists
+    if File.exist?(output_file)
+      File.delete(output_file)
+      puts "Deleted existing combined file: #{output_file}"
+    end
+
     # Process all JSON files in the directory
     Dir.glob(File.join(persons_dir, "*.json")).each do |file|
-      next if File.basename(file) == "gd8_all.json" # Skip the combined file itself
+      next if File.basename(file) == "all.json" # Skip the combined file itself
       begin
         # Parse the JSON file and append its data
         data = JSON.parse(File.read(file))

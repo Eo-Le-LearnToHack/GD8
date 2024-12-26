@@ -9,7 +9,7 @@ url: "https://gd8.dk"
 baseurl: "" # only use if the jekyll project is in a subfolder
 
 collections:
-  costs:
+  bills:
     output: true
   persons:
     output: true
@@ -23,9 +23,9 @@ defaults:
   # if pages in folder _costs then use layout: cost.
   - scope:
       path: ""
-      type: "costs"
+      type: "bills"
     values:
-      layout: "cost"
+      layout: "bill"
 
   # if pages in folder _persons then use layout: person.
   - scope:
