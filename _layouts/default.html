@@ -25,12 +25,12 @@
    
 </head>
 
-<body class="d-flex flex-column min-vh-100">
-    <nav>
+<body class="d-flex flex-column min-vh-100 bg-dark bg-opacity-100">
+    <nav class="border border-light mb-5">
         {% include navigation.html %}
     </nav>
 
-    <header class="container">
+    <header class="container text-light">
         {% include header.html %}
     </header>
 
@@ -38,7 +38,7 @@
         {{ content }}
     </main>
 
-    <footer class="d-flex justify-content-center align-items-center bg-dark text-light py-2 mt-5">
+    <footer class="d-flex justify-content-center align-items-center text-light py-2 mt-5 border border-light">
         {% include footer.html %}
     </footer>
     

@@ -2,34 +2,4 @@
 layout: default
 ---
 
-{% comment %}
-    {% assign year = page.path | split: '/' | last | split: '.' | first %}
-{% endcomment %}
-
-{% assign year = page.year %}
-
-
-
-<h2><u>Begivenheder for {{ page.year }}</u></h2>
-<div class="container-fluid overflow-auto" style="max-height: 800px;">
-    <table class="table table-sm table-striped table-bordered">
-        <thead class="table-info">
-            <tr>
-                {% for events in site.data.events[year] limit: 1 %}
-                    {% for currentArrayData in events %}
-                        <th>{{ currentArrayData[0] }}</th> <!-- Header from keys -->
-                    {% endfor %}
-                {% endfor %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for events in site.data.events[year] %}
-                <tr>
-                    {% for currentArrayData in events %}
-                        <td>{{ currentArrayData[1] }}</td> <!-- Values from data -->
-                    {% endfor %}
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+{{ content }}

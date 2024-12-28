@@ -1,26 +1,18 @@
 ---
 title: GD8 Fødselsdag
 ---
+<h1>Upcoming events - only events theat are equal or later than the current date</h1>
+<div id="containerForUpcomingEvents">
 
-<h1>All Collections</h1>
-<ul>
-  {% for collection in site.collections %}
-    <li>
-      <h2>{{ collection.label }}</h2>
-      <p>Number of items: {{ collection.docs | size }}</p>
-      <ul>
-        {% for item in collection.docs %}
-          <li>
-            <a href="{{ item.url }}">{{ item.title }}</a>
-          </li>
-        {% endfor %}
-      </ul>
-    </li>
-  {% endfor %}
-</ul>
+</div>
 
-Test ruby <br>
-{% assign sortedPersons = site.data.persons.gd8.all | sort: "family" %}
-{% for person in sortedPersons %}
-{{ person.family }}: {{ person.name }}, {{ person.dob}} <br>
-{% endfor %}
+
+
+<script src="{{ '/assets/js/update-check.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/calc-ppl-in-month.js' | relative_url }}"></script>
+
+
+<script>
+	/*const fetchUrlJan = "{{ '/people/ppl-in-jan.html' | relative_url }}";*/
+	
+</script>

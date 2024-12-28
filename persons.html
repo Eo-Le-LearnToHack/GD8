@@ -5,7 +5,7 @@ title: Personer
 <h1>Født i Januar</h1>
 {% assign personInJanuary = site.data.persons.gd8.all | where_exp: "person", "person.dob contains '-01-'" %}
 <div 
-class="container-fluid d-flex align-items-center text-center text-white overflow-x-auto overflow-y-hidden border border-2 custom-img-container">
+class="container-fluid d-flex align-items-center text-center text-white overflow-x-auto overflow-y-hidden border border-2 bg-danger bg-opacity-100 custom-img-container">
 	{% assign sortedPpl = personInJanuary | sort_by_day  %}
 	{% for person in sortedPpl %}
 		<div class="m-5"> 
@@ -14,4 +14,4 @@ class="container-fluid d-flex align-items-center text-center text-white overflow
 			{{person.name}}, {{person.dob | date: '%d-%m-%Y'}}
 		</div>
 	{% endfor %}
-</div>}
+</div>
