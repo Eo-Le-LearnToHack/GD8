@@ -2,9 +2,14 @@ console.log("loaded: assets/js/calc-date");
 
 // Safely access after DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('calc-currentDate').textContent = `Testdato: ${getAnyDate(Date.now())}`;
-    //`Dato: ${getCurrentDay()}-${getCurrentMonth()}-${getCurrentYear()}`;
+
 });
+
+
+function calcCurrentDate(containerID) {
+    console.log("inside calcCurrentDate");
+    document.getElementById(containerID).textContent = `Dagsdato: ${getAnyDate(Date.now())}`;
+}
 
 
 // Define a function to expose the data

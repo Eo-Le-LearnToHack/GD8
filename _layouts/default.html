@@ -25,22 +25,26 @@
    
 </head>
 
-<body class="d-flex flex-column min-vh-100 bg-dark bg-opacity-100">
-    <nav class="border border-light mb-5">
+<body class="d-flex flex-column min-vh-100 bg-dark bg-opacity-100 text-light">
+    <div>
         {% include navigation.html %}
-    </nav>
+    </div>
 
-    <header class="container text-light">
+    
+
+    </div>
+
+    <div>
         {% include header.html %}
-    </header>
+    </div>
 
     <main class="container flex-grow-1">
         {{ content }}
     </main>
 
-    <footer class="d-flex justify-content-center align-items-center text-light py-2 mt-5 border border-light">
+    <div>
         {% include footer.html %}
-    </footer>
+    </div>
     
     <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/calc-date.js' | relative_url }}"></script>

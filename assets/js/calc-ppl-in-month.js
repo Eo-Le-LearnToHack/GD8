@@ -1,5 +1,5 @@
 console.log("loaded: assets/js/calc-ppl-in-month.js")
-function calcPeopleFilteredOnMonth(fetchUrl, containerID) {
+function calcPeopleFilteredByMonth(fetchUrl, containerID) {
     
 fetch(fetchUrl)// Ensure the endpoint returns JSON
 .then(response => {
@@ -7,6 +7,7 @@ fetch(fetchUrl)// Ensure the endpoint returns JSON
     return response.json();
 })
 .then(data => {
+    console.log("inside function of calcPeopleFilteredByMonth");
     const today = new Date();
 
     // Process data: Calculate age dynamically

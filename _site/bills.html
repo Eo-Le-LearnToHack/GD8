@@ -6,7 +6,7 @@
 
     <!-- add the 'last-update' meta tag to expose the current build timestamp.  -->
     <!-- the 'last-update' key and value is used in the assets/js/update-check.js to store on local machine -->
-    <meta name="last-update" content="2024-12-28 19:21:29">
+    <meta name="last-update" content="2024-12-28 23:53:12">
     
     <title>Udgifter</title>
 
@@ -16,8 +16,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
 
-    <!-- add following to ensure css content is updated with updated content of the website: ?v=20241228192129   -->
-    <link rel="stylesheet" href="/assets/css/styles.css?v=20241228192129">
+    <!-- add following to ensure css content is updated with updated content of the website: ?v=20241228235312   -->
+    <link rel="stylesheet" href="/assets/css/styles.css?v=20241228235312">
 
     <!-- bootstrap v.5.3-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -25,9 +25,9 @@
    
 </head>
 
-<body class="d-flex flex-column min-vh-100 bg-dark bg-opacity-100">
-    <nav class="border border-light mb-5">
-        <nav class="navbar navbar-dark bg-dark fixed-top">
+<body class="d-flex flex-column min-vh-100 bg-dark bg-opacity-100 text-light">
+    <div>
+        <nav class="navbar navbar-dark bg-dark fixed-top rounded-top border-bottom border-5 border-light">
     <div class="container-fluid d-flex justify-content-between">
       <a class="navbar-brand" href="/">GD8</a>
       <a class="navbar-brand" href="/events.html">Begivenheder</a>
@@ -86,16 +86,23 @@
       </div>
     </div>
   </nav>
-  <div class="pb-5 mb-5"></div>
+  <div class="py-5"></div>
+ 
 
-    </nav>
+    </div>
 
-    <header class="container text-light">
-        <div class="fw-light" id="calc-currentDate"></div>
-<p class="fst-italic">Sidst opdateret: 28-12-2024 19:21:29 CET</p>
-<h1 class="display-1 fw-bolder">Udgifter</h1><hr>
-<div class="mb-5"></div>
-    </header>
+    
+
+    </div>
+
+    <div>
+        <header class="container">
+    <div class="fw-light" id="calc-currentDate"></div>
+    <p class="fst-italic">Sidst opdateret: 28-12-2024 23:53:12 CET</p>
+    <h1 class="display-1 fw-bolder">Udgifter</h1><hr>
+</header>
+<div class="pb-5"></div>
+    </div>
 
     <main class="container flex-grow-1">
         
@@ -254,11 +261,14 @@
 
     </main>
 
-    <footer class="d-flex justify-content-center align-items-center text-light py-2 mt-5 border border-light">
-        <p><i>Ejet og udviklet af GiaDinh8</i> | <a href="/about.html">Om hjemmesiden</a></p>
+    <div>
+        
+<footer class="d-flex justify-content-center align-items-center py-2 mt-5 rounded-bottom border-top border-5 border-light">
+    <p><i>Ejet og udviklet af GiaDinh8</i> | <a href="/about.html">Om hjemmesiden</a></p>
+</footer>
 
 
-    </footer>
+    </div>
     
     <script src="/assets/js/script.js"></script>
     <script src="/assets/js/calc-date.js"></script>
