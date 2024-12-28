@@ -1,1 +1,4 @@
-{{ site.data.persons.gd8.all | where_exp: "person", "person.family contains '9'" }}
+---
+title: "UtMinh"
+---
+{{ site.data.persons.gd8.all | where_exp: "person", "person.family == '09'" }}

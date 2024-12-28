@@ -1,4 +1,4 @@
-console.log("loaded: assets/js/calc-ppl-in-jan.js")
+console.log("loaded: assets/js/calc-ppl-in-month.js")
 function calcPeopleFilteredOnMonth(fetchUrl, containerID) {
     
 fetch(fetchUrl)// Ensure the endpoint returns JSON
@@ -47,7 +47,7 @@ fetch(fetchUrl)// Ensure the endpoint returns JSON
         personBlock.className = 'p-3'; // Padding for each person's content
 
         personBlock.innerHTML = `
-            <img class="rounded-circle" src="${person.img}" alt="${person.name}" style="width: 100px; height: 100px; object-fit: cover;">
+            <img class="rounded-circle" src="${person.img}" alt="${person.name}">
             <p class="pt-2"><small>${person.name}, ${person.age} år</small></p>
             <p class="pt-2"><small>${person.age + 1} år om ${person.nextBirthday} dage</small></p>
         `;

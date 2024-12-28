@@ -1,0 +1,29 @@
+---
+title: test
+---
+{% assign folder_structure = "" %}
+
+{% for file in site.persons %}
+    {% assign folder_path = file.path | split: '/' | slice: 0, 3 | join: '/' %} <!-- split in 4 elements. Keeps the first three elements = [_persons/gd8/born-in-month,_persons/gd8/family]  -->
+    {% unless folder_structure contains folder_path %}
+        {% assign folder_structure = folder_structure | append: folder_path | append: ',' %} <!-- append only folder_path if new  -->
+    {% endunless %}
+{% endfor %}
+
+{% assign folder_structure = folder_structure | split: ',' %} <!-- convert to array of unique folder paths  -->
+
+
+{% for folder in folder_structure %}
+  {% if folder != "" %}
+    <h2>{{ folder }}</h2>
+    <ul>
+      {% for file in site.persons %}
+        {% assign file_folder = file.path | split: '/' | slice: 0, 3 | join: '/' %}
+
+        {% if file_folder == folder %}
+          <li><a href="{{ file.url }}">{{ file.title | default: file.name }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endfor %}
