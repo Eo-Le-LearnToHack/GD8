@@ -5,7 +5,7 @@ timezone: Europe/Copenhagen
 
 title: "GD8 Fødselsdage"
 
-url: "https://eo-le-learntohack.github.io/GD8"
+url: "https://eo-le-learntohack.github.io/GD8/"
 baseurl: "" # only use if the jekyll project is in a subfolder
 
 collections:
