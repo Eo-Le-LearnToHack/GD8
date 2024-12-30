@@ -2,63 +2,90 @@ console.log("loaded: assets/js/calc-upcoming-events.js");
 
 function calcUpcomingEvents(fetchUrl, containerID) {
     fetch(fetchUrl) // Ensure the endpoint returns JSON
-    .then(response => {
-        if (!response.ok) throw new Error('Network response was not ok');
-        return response.json();
-    })
-    .then(data => {
-        console.log("Inside fetchAndDisplayEvents function", data); // Log to verify the data
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(data => {
+            console.log("Inside fetchAndDisplayEvents function", data); // Log to verify the data
 
-        // Helper function to format the date as dd-MM-yyyy
-        function formatDate(dateStr) {
-            const date = new Date(dateStr);
-            const day = String(date.getDate()).padStart(2, '0');
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const year = date.getFullYear();
-            return `${day}-${month}-${year}`;
-        }
+            // Helper function to format the date as dd-MM-yyyy
+            function formatDate(dateStr) {
+                const date = new Date(dateStr);
+                const day = String(date.getDate()).padStart(2, '0');
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const year = date.getFullYear();
+                return `${day}-${month}-${year}`;
+            }
 
-        // Filter and map the data to ensure it's in the correct structure
-        const today = new Date();
-        const processedData = data
-            .filter(event => {
-                const eventDate = new Date(event.Dato);
-                return event.Dato && eventDate >= today; // Include only events with valid future dates
-            })
-            .map(event => {
-                return {
-                    Dato: event.Dato ? formatDate(event.Dato) : 'N/A',
-                    Begivenhed: event.Begivenhed || 'N/A',
-                    Sted: event.Sted || 'N/A',
-                    Bemærkning: event.Bemærkning || 'N/A'
-                };
+            // Filter and map the data to ensure it's in the correct structure
+            const today = new Date();
+            const processedData = data
+                .filter(event => {
+                    const eventDate = new Date(event.Dato);
+                    return event.Dato && eventDate >= today; // Include only events with valid future dates
+                })
+                .map(event => {
+                    return {
+                        Dato: event.Dato ? formatDate(event.Dato) : 'N/A',
+                        Begivenhed: event.Begivenhed || 'N/A',
+                        Sted: event.Sted || 'N/A',
+                        Bemærkning: event.Bemærkning || 'N/A'
+                    };
+                });
+
+            // Dynamically render the data into the container
+            const container = document.getElementById(containerID);
+            container.innerHTML = ''; // Clear existing content
+
+            // Create the carousel structure
+            const carousel = document.createElement('div');
+            carousel.id = 'eventsCarousel';
+            carousel.className = 'carousel slide';
+            carousel.setAttribute('data-bs-ride', 'carousel');
+            carousel.setAttribute('data-bs-interval', '5000');
+            carousel.setAttribute('data-bs-pause', 'false'); // Ensure autoplay without user interaction
+
+            const carouselInner = document.createElement('div');
+            carouselInner.className = 'carousel-inner';
+
+            // Loop through the data and create each carousel item
+            processedData.forEach((event, index) => {
+                const carouselItem = document.createElement('div');
+                carouselItem.className = `carousel-item${index === 0 ? ' active' : ''}`;
+
+                carouselItem.innerHTML = `
+                    <div class="d-flex flex-column justify-content-center align-items-center text-center" style="height: 250px;background-color: #333">
+                        <p class="pt-2"><strong>Begivenhed:</strong> ${event.Begivenhed} d.  ${event.Dato}</p>
+                        <p class="pt-2"><strong>Sted:</strong> ${event.Sted}</p>
+                        <p class="pt-2"><strong>Bemærkning:</strong> ${event.Bemærkning}</p>
+                    </div>
+                `;
+
+                carouselInner.appendChild(carouselItem); // Append each carousel item to the carousel inner container
             });
 
-        // Dynamically render the data into the container
-        const container = document.getElementById(containerID);
-        container.innerHTML = ''; // Clear existing content
+            carousel.appendChild(carouselInner);
 
-        // Create a d-flex container
-        const dFlexContainer = document.createElement('div');
-        dFlexContainer.className = 'container-fluid d-flex align-items-center text-center text-white overflow-x-auto overflow-y-auto border border-2';
-        //dFlexContainer.style.height = '250px';
-
-        // Loop through the data and create each event's block
-        processedData.forEach(event => {
-            const eventBlock = document.createElement('div');
-            eventBlock.className = 'p-3'; // Padding for each event's content
-
-            eventBlock.innerHTML = `
-                <p class="pt-2"><strong>Dato:</strong> ${event.Dato}</p>
-                <p class="pt-2"><strong>Begivenhed:</strong> ${event.Begivenhed}</p>
-                <p class="pt-2"><strong>Sted:</strong> ${event.Sted}</p>
-                <p class="pt-2"><strong>Bemærkning:</strong> ${event.Bemærkning}</p>
+            // Add carousel controls
+            carousel.innerHTML += `
+                <button class="carousel-control-prev" type="button" data-bs-target="#eventsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#eventsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             `;
 
-            dFlexContainer.appendChild(eventBlock); // Append each event block to the d-flex container
-        });
+            container.appendChild(carousel); // Append the carousel to the main container
 
-        container.appendChild(dFlexContainer); // Append the d-flex container to the main container
-    })
-    .catch(error => console.error('Error fetching or processing data:', error));
+            // Programmatically trigger the autoplay to start immediately
+            const bootstrapCarousel = new bootstrap.Carousel(carousel, {
+                interval: 5000,
+                ride: 'carousel'
+            });
+        })
+        .catch(error => console.error('Error fetching or processing data:', error));
 }

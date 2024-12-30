@@ -9,12 +9,17 @@ title: GD8 Fødselsdag
 <div class="p-2 mb-5 border border-2 rounded" id="containerForPersons">
 	<p>Hvis du ser denne tekst, er indholdet ikke loadet korrekt!</p>
 </div>
+<h1><u>Alle familierne</u></h1>
+<div class="p-2 mb-5 border border-2 rounded" id="containerForFamily">
+	<p>Hvis du ser denne tekst, er indholdet ikke loadet korrekt!</p>
+</div>
 
 
 
 <script src="{{ '/assets/js/update-check.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/calc-upcoming-events.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/calc-ppl-in-month.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/calc-ppl-in-family.js' | relative_url }}"></script>
 
 
 <script>
@@ -25,5 +30,12 @@ title: GD8 Fødselsdag
 
 	const fetchUrlEvents = "{{ '/events/api/gd8/all.html' | relative_url }}";
 	calcUpcomingEvents(fetchUrlEvents, 'containerForUpcomingEvents');
+
+	const fetchUrlFamily = [
+            "{{ '/persons/gd8/family/09.html' | relative_url }}",
+            "{{ '/persons/gd8/family/08.html' | relative_url }}",
+            "{{ '/persons/gd8/family/07.html' | relative_url }}"
+        ];
+	calcPeopleInFamily(fetchUrlFamily,'containerForFamily')
 
 </script>

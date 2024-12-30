@@ -4,12 +4,12 @@
 # documentation.
 
 # Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Jekyll GD8 navigationBar #NOt allowed to used variables, e.g. ${{ github.repository }} and so on
+name: Jekyll GD8 fixPersonsCollection #NOt allowed to used variables, e.g. ${{ github.repository }} and so on
 
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["navigationBar"]
+    branches: ["fixPersonsCollection"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:

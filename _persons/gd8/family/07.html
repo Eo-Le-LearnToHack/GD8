@@ -1,4 +1,3 @@
 ---
-title: "Benny"
 ---
-{{ site.data.persons.gd8.all | where_exp: "person", "person.family == '07'" }}
+{{ site.data.persons.gd8.all | where_exp: "person", "person.family == '07'" | sort: "dob" | reverse | jsonify }}
