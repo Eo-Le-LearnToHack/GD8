@@ -27,7 +27,7 @@
 
 <body class="d-flex flex-column min-vh-100 bg-dark bg-opacity-100 text-light" style="background-image: url('./assets/img/bg/Theme-Red-Minimalistic-Patterns.jpg');">
     <div>
-        {% include navigation.html %}
+        {% render navigation.html %}
     </div>
 
     
@@ -35,7 +35,7 @@
     </div>
 
     <div>
-        {% include header.html %}
+        {% render header.html %}
     </div>
 
     <main class="container flex-grow-1">
@@ -43,7 +43,7 @@
     </main>
 
     <div>
-        {% include footer.html %}
+        {% render footer.html %}
     </div>
     
     <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
