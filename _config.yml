@@ -49,6 +49,11 @@ defaults:
 
 
 
+sass:
+  sass_dir: _sass
+
+
+
 #plugins:
 #  - jekyll-feed
   
