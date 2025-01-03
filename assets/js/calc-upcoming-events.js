@@ -7,7 +7,7 @@ function calcUpcomingEvents(fetchUrl, containerID) {
             return response.json();
         })
         .then(data => {
-            console.log("Inside fetchAndDisplayEvents function", data); // Log to verify the data
+            console.log("Inside calcUpcomingEvents function", data); // Log to verify the data
 
             // Helper function to format the date as dd-MM-yyyy
             function formatDate(dateStr) {
@@ -20,23 +20,27 @@ function calcUpcomingEvents(fetchUrl, containerID) {
 
             // Filter and map the data to ensure it's in the correct structure
             const today = new Date();
-            const processedData = data
-                .filter(event => {
-                    const eventDate = new Date(event.Dato);
-                    return event.Dato && eventDate >= today; // Include only events with valid future dates
-                })
-                .map(event => {
-                    return {
-                        Dato: event.Dato ? formatDate(event.Dato) : 'N/A',
-                        Begivenhed: event.Begivenhed || 'N/A',
-                        Sted: event.Sted || 'N/A',
-                        Bemærkning: event.Bemærkning || 'N/A'
-                    };
-                });
+            const validEvents = data.filter(event => {
+                const eventDate = new Date(event.Dato);
+                return event.Dato && eventDate >= today;
+            });
 
-            // Dynamically render the data into the container
+            const processedData = validEvents.length > 0 ? validEvents.map(event => {
+                return {
+                    Dato: event.Dato ? formatDate(event.Dato) : 'N/A',
+                    Begivenhed: event.Begivenhed || 'N/A',
+                    Sted: event.Sted || 'N/A',
+                    Bemærkning: event.Bemærkning || 'N/A'
+                };
+            }) : 'N/A';
+
             const container = document.getElementById(containerID);
             container.innerHTML = ''; // Clear existing content
+
+            if (processedData === 'N/A') {
+                container.innerHTML = '<p class="text-center text-muted">N/A</p>';
+                return;
+            }
 
             // Create the carousel structure
             const carousel = document.createElement('div');
